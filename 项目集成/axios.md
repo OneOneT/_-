@@ -1,4 +1,4 @@
-# 01_常见请求演练.js
+# 01\_常见请求演练.js
 
 ```js
 const axios = require("axios");
@@ -48,10 +48,9 @@ axios
   .then((res) => {
     console.log(res.data);
   });
-
 ```
 
-# 02_额外知识补充.js
+# 02\_额外知识补充.js
 
 ```js
 const axios = require("axios").default;
@@ -73,10 +72,9 @@ axios.defaults.timeout = 10000;
 axios.all([axios.get("/get"), axios.get("/get")]).then((res) => {
   console.log(res);
 });
-
 ```
 
-# 03_创建axios实例.js
+# 03\_创建 axios 实例.js
 
 ```js
 const axios = require("axios").default;
@@ -94,48 +92,53 @@ const instance = axios.create({
 instance.get("/get").then((res) => {
   console.log(res.data);
 });
-
 ```
 
-
-
-# 04_Axios的拦截器.js
+# 04_Axios 的拦截器.js
 
 ```js
-
 // 对实例配置拦截器
-axios.interceptors.request.use((config) => {
-  console.log("请求成功的拦截")
-  // 1.开始loading的动画
+axios.interceptors.request.use(
+  (config) => {
+    console.log("请求成功的拦截");
+    // 1.开始loading的动画
 
-  // 2.对原来的配置进行一些修改
-  // 2.1. header
-  // 2.2. 认证登录: token/cookie
-  // 2.3. 请求参数进行某些转化
+    // 2.对原来的配置进行一些修改
+    // 2.1. header
+    // 2.2. 认证登录: token/cookie
+    // 2.3. 请求参数进行某些转化
 
-  return config
-}, (err) => {
-  console.log("请求失败的拦截")
-  return err
-})
+    return config;
+  },
+  (err) => {
+    console.log("请求失败的拦截");
+    return err;
+  }
+);
 
-axios.interceptors.response.use((res) => {
-  console.log("响应成功的拦截")
+axios.interceptors.response.use(
+  (res) => {
+    console.log("响应成功的拦截");
 
-  // 1.结束loading的动画
+    // 1.结束loading的动画
 
-  // 2.对数据进行转化, 再返回数据
-  return res.data
-}, (err) => {
-  console.log("响应失败的拦截:", err)
-  return err
-})
+    // 2.对数据进行转化, 再返回数据
+    return res.data;
+  },
+  (err) => {
+    console.log("响应失败的拦截:", err);
+    return err;
+  }
+);
 
-axios.get("http://123.207.32.32:9001/lyric?id=500665346").then(res => {
-  console.log("res:", res)
-}).catch(err => {
-  console.log("err:", err)
-})
+axios
+  .get("http://123.207.32.32:9001/lyric?id=500665346")
+  .then((res) => {
+    console.log("res:", res);
+  })
+  .catch((err) => {
+    console.log("err:", err);
+  });
 ```
 
 # 05. axios-js(封装)
@@ -185,7 +188,6 @@ class MyAxios {
 
 //baseURL timeout
 module.exports = new MyAxios("https://httpbin.org");
-
 ```
 
 # 06. axios-ts(封装)
@@ -211,10 +213,7 @@ export interface RequestInterceptors<T = AxiosResponse> {
 export interface RequestConfig<T = AxiosResponse> extends AxiosRequestConfig {
   interceptors?: RequestInterceptors<T>;
 }
-
 ```
-
-
 
 ```ts
 import axios from "axios";
@@ -321,7 +320,6 @@ class Request {
 }
 
 export default Request;
-
 ```
 
 ```ts
@@ -361,6 +359,4 @@ export const req1 = new Request({
 //     },
 //   },
 // });
-
 ```
-
