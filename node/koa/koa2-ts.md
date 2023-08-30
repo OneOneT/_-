@@ -6,7 +6,7 @@
 npm install typescript
 ```
 
-tsconfig.json的配置
+tsconfig.json 的配置
 
 ```
 {
@@ -30,17 +30,13 @@ tsconfig.json的配置
 
 ```
 
+## 2. esbuild 和 esbuild-register(esmodule 风格)
 
-
-## 2. esbuild 和 esbuild-register(esmodule风格)
-
-​	https://juejin.cn/s/nodemon%20esbuild-register
+​ https://juejin.cn/s/nodemon%20esbuild-register
 
 ```
 npm i esbuild esbuild-register -D
 ```
-
-
 
 ## 3. nodemon
 
@@ -54,22 +50,16 @@ npm install --save-dev nodemo
 "start": "nodemon --watch src -e ts --exec \"node -r esbuild-register\" src/main.ts"
 ```
 
-
-
 ## 4. koa
 
 ```
 npm install koa
-npm install @types/koa -D 
+npm install @types/koa -D
 ```
 
-
-
-## 5. koa-bodyparser和koa-body
+## 5. koa-bodyparser 和 koa-body
 
 https://juejin.cn/s/koa-bodyparser%E5%92%8Ckoa-body
-
-
 
 ## 6. koa-router
 
@@ -77,15 +67,11 @@ https://juejin.cn/s/koa-bodyparser%E5%92%8Ckoa-body
 npm install @koa/router
 ```
 
-
-
 ## 7. koa-bodyparser
 
 ```
 npm i koa-bodyparser
 ```
-
-
 
 ## 8. koa-multer
 
@@ -93,23 +79,17 @@ npm i koa-bodyparser
 npm install --save @koa/multer multer
 ```
 
-
-
 ## 9. mysql2
 
 ```
 npm install --save mysql2
 ```
 
-
-
 ## 10. jsonwebtoken
 
 ```
 npm install jsonwebtoken
 ```
-
-
 
 ## 11. dotenv
 
@@ -121,33 +101,26 @@ env.config();
 module.exports = { SERVER_HOST } = process.env;
 ```
 
-
-
-## 12.  对数据MD5加密(node自带模块)
+## 12. 对数据 MD5 加密(node 自带模块)
 
 ```js
-const crypto = require('crypto')
-
+const crypto = require("crypto");
 
 function md5password(password) {
-  const md5 = crypto.createHash('md5')
-  const md5pwd = md5.update(password).digest('hex')//hex转化为十六进制
+  const md5 = crypto.createHash("md5");
+  const md5pwd = md5.update(password).digest("hex"); //hex转化为十六进制
 
-  return md5pwd
+  return md5pwd;
 }
 ```
 
-
-
-
-
 # 二. 代码规范
 
-### 1.1. 集成editorconfig配置
+### 1.1. 集成 editorconfig 配置
 
 EditorConfig 有助于为不同 IDE 编辑器上处理同一项目的多个开发人员维护一致的编码风格。
 
- 配置 .editorconfig文件：
+配置 .editorconfig 文件：
 
 ```
 # http://editorconfig.org
@@ -167,15 +140,15 @@ max_line_length = off
 trim_trailing_whitespace = false
 ```
 
-VSCode需要安装一个插件：EditorConfig for VS Code
+VSCode 需要安装一个插件：EditorConfig for VS Code
 
 ![image-20230825150104817](https://cdn.jsdelivr.net/gh/OneOneT/images@main/image-20230825150104817.png)
 
-### 1.2. 使用prettier工具
+### 1.2. 使用 prettier 工具
 
 Prettier 是一款强大的代码格式化工具，支持 JavaScript、TypeScript、CSS、SCSS、Less、JSX、Angular、Vue、GraphQL、JSON、Markdown 等语言，基本上前端能用到的文件格式它都可以搞定，是当下最流行的代码格式化工具。
 
-#### 1.安装prettier
+#### 1.安装 prettier
 
 ```npm
 npm install prettier -D
@@ -183,12 +156,12 @@ npm install prettier -D
 
 #### 2.配置 .prettierrc 文件：
 
-- useTabs：使用tab缩进还是空格缩进，选择false；
-- tabWidth：tab是空格的情况下，是几个空格，选择2个；
-- printWidth：当行字符的长度，推荐80，也有人喜欢100或者120；
-- singleQuote：使用单引号还是双引号，选择true，使用单引号；
+- useTabs：使用 tab 缩进还是空格缩进，选择 false；
+- tabWidth：tab 是空格的情况下，是几个空格，选择 2 个；
+- printWidth：当行字符的长度，推荐 80，也有人喜欢 100 或者 120；
+- singleQuote：使用单引号还是双引号，选择 true，使用单引号；
 - trailingComma：在多行输入的尾逗号是否添加，设置为 `none`；
-- semi：语句末尾是否要加分号，默认值true，选择false表示不加；
+- semi：语句末尾是否要加分号，默认值 true，选择 false 表示不加；
 
 ```
 {
@@ -215,47 +188,47 @@ npm install prettier -D
 /public/*
 ```
 
-#### 4.VSCode需要安装prettier的插件
+#### 4.VSCode 需要安装 prettier 的插件
 
 ![image-20230825150151099](https://cdn.jsdelivr.net/gh/OneOneT/images@main/image-20230825150151099.png)
 
-#### 5.测试prettier是否生效
+#### 5.测试 prettier 是否生效
 
 - 测试一：在代码中保存代码；
 - 测试二：配置一次性修改的命令；
 
-在package.json中配置一个scripts：
+在 package.json 中配置一个 scripts：
 
 ```
   "prettier": "prettier --write ."
 ```
 
-### 1.3. 使用ESLint检测
+### 1.3. 使用 ESLint 检测
 
-1.在前面创建项目的时候，我们就选择了ESLint，所以Vue会默认帮助我们配置需要的ESLint环境。
+1.在前面创建项目的时候，我们就选择了 ESLint，所以 Vue 会默认帮助我们配置需要的 ESLint 环境。
 
-####  1.安装eslint：
+#### 1.安装 eslint：
 
 ```
 npm install eslint -D
 ```
 
-####  2.初始化eslint
+#### 2.初始化 eslint
 
 ```
 npm init @eslint/config
 ```
 
-#### 3.VSCode需要安装ESLint插件：
+#### 3.VSCode 需要安装 ESLint 插件：
 
 ![image-20230825150217942](https://cdn.jsdelivr.net/gh/OneOneT/images@main/image-20230825150217942.png)
 
-#### 4.解决eslint和prettier冲突的问题：
+#### 4.解决 eslint 和 prettier 冲突的问题：
 
-安装插件：（vue在创建项目时，如果选择prettier，那么这两个插件会自动安装）
+安装插件：（vue 在创建项目时，如果选择 prettier，那么这两个插件会自动安装）
 
-- `eslint-config-prettier`: 关闭所有不必要的或可能与Prettier冲突的规则, 是一个规则集
-- `eslint-plugin-prettier`: 仅仅使用`eslint-config-prettier`, 还需要增加一些配置才能让eslint运行`eslint-config-prettier`中的规则并报错, 使用`eslint-plugin-prettier`相当于省略了那些配置
+- `eslint-config-prettier`: 关闭所有不必要的或可能与 Prettier 冲突的规则, 是一个规则集
+- `eslint-plugin-prettier`: 仅仅使用`eslint-config-prettier`, 还需要增加一些配置才能让 eslint 运行`eslint-config-prettier`中的规则并报错, 使用`eslint-plugin-prettier`相当于省略了那些配置
 
 注意`eslint-plugin-prettier`依赖`prettier`
 
@@ -263,7 +236,7 @@ npm init @eslint/config
 npm i eslint-plugin-prettier eslint-config-prettier -D
 ```
 
-#### 5.添加prettier插件：
+#### 5.添加 prettier 插件：
 
 ```
   "extends": [
@@ -338,22 +311,22 @@ npm i eslint-plugin-prettier eslint-config-prettier -D
 # 四. 路由自动化
 
 ```js
-const fs = require('fs')
+const fs = require("fs");
 
 function registerRouters(app) {
   // 1.读取当前文件夹下的所有文件
-  const files = fs.readdirSync(__dirname)
+  const files = fs.readdirSync(__dirname);
 
   // 2.遍历所有的文件
   for (const file of files) {
-    if (!file.endsWith('.router.js')) continue
-    const router = require(`./${file}`)
-    app.use(router.routes())
-    app.use(router.allowedMethods())
+    if (!file.endsWith(".router.js")) continue;
+    const router = require(`./${file}`);
+    app.use(router.routes());
+    app.use(router.allowedMethods());
   }
 }
 
-module.exports = registerRouters
+module.exports = registerRouters;
 
 //--------------------------------------------------------------
 const fs = require("fs");
@@ -376,7 +349,6 @@ function registerRouter(app) {
     }
   });
 }
-
 ```
 
 # 五. 数据库配置信息
@@ -414,16 +386,4 @@ connectionPool.getConnection((err, connection) => {
 const connection = connectionPool.promise();
 
 module.exports = connection;
-
 ```
-
-
-
-
-
-
-
-
-
-
-
