@@ -4059,7 +4059,7 @@ export default store
   - `pending`:action被发出，但是还没有最终的结果;
   - `fulfilled`:获取到最终的结果(有返回值的结果);
   - `rejected`:执行过程中有错误或者抛出了异常;
-- 我们可以在**createSlice的entraReducer中监听这些结果:**  见右图
+- 我们可以在**createSlice的entraReducer中监听这些结果:** 
 
 ```js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
